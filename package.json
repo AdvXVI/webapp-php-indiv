@@ -1,0 +1,28 @@
+{
+  "name": "webapp-indiv",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:lib": "node public/build-lib.js",
+    "build:css": "postcss public/styles.css -o public/dist/styles.css",
+    "watch:css": "postcss public/styles.css -o public/dist/styles.css --watch",
+    "postinstall": "npm run build:lib && npm run build:css"
+  },
+  "keywords": [],
+  "author": "Jaz",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "jquery": "^3.7.1",
+    "jquery-validation": "^1.21.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1"
+  }
+}
