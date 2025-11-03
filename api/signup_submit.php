@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../db.php';
 
+require_once __DIR__ . '/../core/session_init.php';
+
 header('Content-Type: application/json');
 
 $fullName = trim($_POST['signup-name'] ?? '');
@@ -52,9 +54,23 @@ try {
         ':address' => $address,
         ':contact_number' => $contact,
         ':password_hash' => $hashedPassword
-    ]); 
+    ]);
 
-    echo json_encode(["success" => true, "message" => "Account created successfully."]);
+    $userId = $pdo->lastInsertId();
+    $_SESSION['user_id'] = $userId;
+    $_SESSION['user_name'] = $fullName;
+    $_SESSION['user_email'] = $email;
+
+    echo json_encode([
+        'success' => true,
+        'message' => 'Signup successful! You are now logged in.',
+        'user' => [
+            'id' => $userId,
+            'name' => $fullName,
+            'email' => $email
+        ]
+    ]);
+    
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]);

@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../db.php';
 
+require_once __DIR__ . '/../core/session_init.php';
+
 header('Content-Type: application/json');
 
 $email = $_POST['login-email'] ?? '';
@@ -13,18 +15,17 @@ if (empty($email) || empty($password)) {
 }
 
 try {
-    $stmt = $pdo->prepare("SELECT id, full_name, password_hash FROM users WHERE email = :email LIMIT 1");
+    $stmt = $pdo->prepare("SELECT id, full_name, email, password_hash FROM users WHERE email = :email LIMIT 1");
     $stmt->execute([':email' => $email]);
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password_hash'])) {
 
-        /*
-        // start a session here
-        session_start();
+
+        // set session stuff
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_name'] = $user['full_name'];
-        */
+        $_SESSION['user_email'] = $user['email'];
 
         echo json_encode([
             'success' => true,

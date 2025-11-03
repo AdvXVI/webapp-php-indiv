@@ -1,3 +1,5 @@
+<?php require_once __DIR__ . '/../../core/session_init.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include '../partials/header.php'; ?>
