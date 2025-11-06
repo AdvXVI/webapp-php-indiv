@@ -360,8 +360,6 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionStorage.removeItem("pendingAlert");
   }
 
-
-
   // -- CART FUNCTIONS --
 
   async function renderCart() {
@@ -1085,6 +1083,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const $confirm = $('#confirm-purchase-btn');
     const $thankyou = $('#checkout-thankyou');
     const $modalFooter = $('#checkout-modal-footer');
+
+    fetch(`${BASE_URL}/api/get_user.php`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.user.email) {
+          const emailField = document.getElementById('checkout-email');
+          if (emailField && !emailField.value) {
+            emailField.value = data.user.email;
+          }
+        }
+      })
+      .catch(err => console.error("Failed to fetch user email:", err));
 
     $form.validate({
       onkeyup: function (element) { $(element).valid(); },

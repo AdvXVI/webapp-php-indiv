@@ -1,0 +1,8 @@
+<script>
+  const BASE_URL = "<?= $base ?>";
+</script>
+<script src="<?= $base ?>/public/dist/jquery/jquery.min.js"></script>
+<script src="<?= $base ?>/public/dist/jquery-validation/jquery.validate.min.js"></script>
+<script src="<?= $base ?>/public/dist/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="<?= $base ?>/public/script_admin.js?v=<?= time() ?>"></script>
+

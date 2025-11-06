@@ -11,7 +11,7 @@
           <div id="checkout-summary"></div>
           <form id="checkout-form" class="mt-4">
             <div class="mb-3">
-              <label for="checkout-email" class="form-label">Email address</label>
+              <label for="checkout-email" class="form-label">Send to (email)</label>
               <input type="email" class="form-control" id="checkout-email" name="checkout-email" required
                 autocomplete="email" placeholder="you@email.com">
               <div class="invalid-feedback" id="checkout-email-feedback"></div>
