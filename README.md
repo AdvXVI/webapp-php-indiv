@@ -8,6 +8,49 @@ It allows users to browse and purchase games.
 
 ---
 
+## Sessions
+
+Sessions were implemented to manage **user authentication and persistence** throughout the site.
+
+* When a user logs in, their information (`user_id`, `user_name`, and `user_email`) is stored in a PHP session.
+* Session data allows personalized content, such as:
+
+  * Showing the logged-in user's name and email in the **navbar**.
+  * Restricting access to certain features (e.g., cart, checkout) for non-logged-in users.
+* Logging out clears the session, removing all stored user data.
+* Session initialization was standardized across the project via a reusable file:
+
+  ```php
+  // core/session_init.php
+  if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
+  ```
+
+  This ensures every page and partial can safely access session data without duplication or errors.
+
+## File Inclusions
+
+File inclusions were used to **modularize** the web app and improve code organization.
+
+* Common page elements like **navbars**, **headers**, **footers**, and **modals** were separated into individual files inside:
+
+  ```
+  html/partials/
+  ```
+* These are then included dynamically using:
+
+  ```php
+  <?php include __DIR__ . '/../partials/navbar.php'; ?>
+  ```
+* This approach:
+
+  * Keeps code cleaner and more maintainable.
+  * Makes updating shared components consistent across all pages.
+  * Demonstrates proper PHP include/require practices.
+
+---
+
 ## How to Run
 
 1. Clone or download this repository.  
