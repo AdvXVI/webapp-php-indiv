@@ -50,7 +50,7 @@ http://localhost/webapp-php-indiv/html/admin/add_product.php
 
 ### Functionality:
 
-* Allows administrators (available to everyone to access for now) to add new games/products to the catalog.
+* Allows administrators (available for everyone to access for now) to add new games/products to the catalog.
 * Supports adding:
 
   * **Product name**
